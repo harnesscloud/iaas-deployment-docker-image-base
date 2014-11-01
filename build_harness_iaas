@@ -1,5 +1,5 @@
 #!/bin/bash
-git clone git@gitlab.harness-project.eu:gabe/harness-deployment-imp.git harness
+git clone git@gitlab.harness-project.eu:gabe/iaas-deployment-imp.git harness
 cd harness
 git submodule init
 git submodule update
