@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker run --net="host" -d -t iaas-deployment-docker-image 172.28.128.4 9e8a1d64-320a-4acc-9436-6276f7059fe5 fixed 1866971a-c62e-4a5e-94d4-d2eaa0fe2814 
+
