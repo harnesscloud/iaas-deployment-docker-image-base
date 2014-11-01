@@ -1,7 +1,7 @@
 FROM sequenceiq/pam:ubuntu-14.04
 MAINTAINER Gabriel Figueiredo <gabriel.figueiredo@imperial.ac.uk>
 
-RUN apt-get -y update && apt-get -y install curl git python-dev python-pip && pip install supervisor Flask pyzmq bottle psutil 
+RUN apt-get -y update && apt-get -y install nano curl git python-dev python-pip && pip install supervisor Flask pyzmq bottle psutil 
 
 #RUN mkdir /var/run/sshd
 #RUN echo 'root:root' | chpasswd
