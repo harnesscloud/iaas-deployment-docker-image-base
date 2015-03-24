@@ -3,7 +3,7 @@ CONFIG_VARIABLES="PASSWORD NOVA_ENDPOINT IRM_INTERFACE CRS_URL IMAGE_NAME DEFAUL
 
 # configuring irm-nova
 for varname in ${CONFIG_VARIABLES}; do
-    varvalue=$(eval "echo \${$VARNAME}")
+    varvalue=$(eval "echo \${$varname}")
     if [ -n "$varvalue" ]; then
         sed -i "/^$varname:/s/:.*$/: $varvalue/" /harness/cfg/irm-nova.cfg 
     fi
