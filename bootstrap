@@ -1,0 +1,9 @@
+#!/bin/bash
+supervisorctl start publisher zmq_device display
+curl -X POST http://localhost:6000/registerPath -H "Content-Type: application/json" -d "{\"LoggingPath\":[\"/harness/crs/crs.log\"]}"
+sleep 1
+supervisorctl start crs
+supervisorctl start irm-nova
+#supervisorctl start irm-shepard
+
+exit 0

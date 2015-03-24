@@ -25,5 +25,6 @@ RUN git clone https://github.com/harnesscloud/crs.git && \
 
 COPY cfg/* cfg/
 COPY start_harness_iaas ./
+COPY bootstrap ./
 
 CMD ./start_harness_iaas
