@@ -9,12 +9,4 @@ for varname in ${CONFIG_VARIABLES}; do
     fi
 done
 
-supervisord -n -c cfg/supervisord.conf 
-sleep 1
-supervisorctl start publisher zmq_device display
-curl -X POST http://localhost:6000/registerPath -H "Content-Type: application/json" -d "{\"LoggingPath\":[\"/harness/crs/crs.log\"]}"
-sleep 1
-supervisorctl start crs
-supervisorctl start irm-nova
-#supervisorctl start irm-shepard
-
+supervisord -n -c supervisord.conf 
