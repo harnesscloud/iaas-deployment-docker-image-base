@@ -19,8 +19,10 @@ RUN pip install \
         supervisor
 
 WORKDIR /harness
+
 RUN git clone https://github.com/harnesscloud/crs.git && \
     git clone https://github.com/harnesscloud/irm-nova.git && \
+    (cd irm-nova && git checkout a789a05308a98586ca4480e2e7c1307c7f223c44) && \
     git clone https://github.com/harnesscloud/irm-shepard.git
 
 COPY cfg/* cfg/
