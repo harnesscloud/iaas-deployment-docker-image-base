@@ -1,7 +1,0 @@
-#!/bin/bash
-git clone git@gitlab.harness-project.eu:gabe/iaas-deployment-imp.git harness
-cd harness
-git submodule init
-git submodule update
-
-

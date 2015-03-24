@@ -19,10 +19,10 @@ RUN pip install \
         supervisor
 
 WORKDIR /harness
-RUN git clone git@gitlab.harness-project.eu:gabe/iaas-deployment-imp.git . && \
-    git submodule init && \
-    submodule update
+RUN git clone https://github.com/harnesscloud/crs.git && \
+    git clone https://github.com/harnesscloud/irm-nova.git && \
+    git clone https://github.com/harnesscloud/irm-shepard.git
 
-ADD start_harness_iaas /usr/local/bin
+COPY start_harness_iaas /usr/local/sbin/
 
-CMD /usr/local/bin/start_harness_iaas
+CMD /usr/local/sbin/start_harness_iaas
