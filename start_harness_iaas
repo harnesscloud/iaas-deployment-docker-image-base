@@ -1,19 +1,12 @@
 #!/bin/bash
+CONFIG_VARIABLES="PASSWORD NOVA_ENDPOINT IRM_INTERFACE CRS_URL IMAGE_NAME DEFAULT_IMAGE"
 
 # configuring irm-nova
-sed -i s/MAIN_NOVA_ENDPOINT/$1/ /harness/cfg/irm-nova.cfg 
-sed -i s/CRS_DEFAULT_IMAGE/$2/ /harness/cfg/irm-nova.cfg 
-sed -i s/NETWORK_IP_TYPE/$3/ /harness/cfg/irm-nova.cfg 
-sed -i s/NETWORK_UUID/$4/ /harness/cfg/irm-nova.cfg 
+for varname in ${CONFIG_VARIABLES}; do
+    varvalue=$(eval "echo \${$VARNAME}")
+    if [ -n "$varvalue" ]; then
+        sed -i "/^$varname:/s/:.*$/: $varvalue/" /harness/cfg/irm-nova.cfg 
+    fi
+done
 
-cd /harness
-DIR=$PWD
-git pull origin master
-cd $DIR/crs && git pull origin master
-cd $DIR/irm-nova && git pull origin master
-cd $DIR/irm-shepard && git pull origin master
-cd $DIR/msg-display && git pull origin master
-cd $DIR
-
-/usr/sbin/sshd -D
-supervisord -n -c supervisord.conf 
+supervisord -n -c cfg/supervisord.conf 

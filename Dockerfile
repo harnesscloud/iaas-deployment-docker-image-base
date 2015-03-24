@@ -23,6 +23,7 @@ RUN git clone https://github.com/harnesscloud/crs.git && \
     git clone https://github.com/harnesscloud/irm-nova.git && \
     git clone https://github.com/harnesscloud/irm-shepard.git
 
-COPY start_harness_iaas /usr/local/sbin/
+COPY cfg/* cfg/
+COPY start_harness_iaas ./
 
-CMD /usr/local/sbin/start_harness_iaas
+CMD ./start_harness_iaas
