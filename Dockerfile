@@ -24,6 +24,7 @@ RUN git clone https://github.com/harnesscloud/crs.git && \
     git clone https://github.com/harnesscloud/irm-shepard.git
 
 COPY cfg/* cfg/
+COPY supervisord.conf ./
 COPY start_harness_iaas ./
 COPY bootstrap ./
 
