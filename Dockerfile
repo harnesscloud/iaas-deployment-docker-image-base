@@ -30,4 +30,8 @@ COPY supervisord.conf ./
 COPY start_harness_iaas ./
 COPY bootstrap ./
 
+RUN ln -sf /etc/harness-iaas/compute_list compute_list 
+
+VOLUME /etc/harness-iaas
+
 CMD ./start_harness_iaas
