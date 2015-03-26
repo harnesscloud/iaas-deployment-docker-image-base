@@ -31,6 +31,7 @@ COPY start_harness_iaas ./
 COPY bootstrap ./
 
 RUN ln -sf /etc/harness-iaas/compute_list compute_list 
+RUN ln -sf /etc/harness-iaas/crs.constraints crs.constraints
 
 VOLUME /etc/harness-iaas
 
