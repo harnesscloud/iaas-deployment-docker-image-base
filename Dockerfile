@@ -33,7 +33,7 @@ COPY bootstrap ./
 RUN rm -f /harness/irm-nova/compute_list && \
     ln -sf /etc/harness-iaas/compute_list /harness/irm-nova/compute_list 
 RUN rm -f /harness/crs/crs.constraints && \
-    ln -sf /etc/harness-iaas/crs.constraints crs.constraints
+    ln -sf /etc/harness-iaas/crs.constraints /harness/crs/crs.constraints
 
 VOLUME /etc/harness-iaas
 
