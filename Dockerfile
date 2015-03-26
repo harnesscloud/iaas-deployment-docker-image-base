@@ -35,4 +35,6 @@ RUN ln -sf /etc/harness-iaas/crs.constraints crs.constraints
 
 VOLUME /etc/harness-iaas
 
+EXPOSE 8888 56789
+
 CMD ./start_harness_iaas
