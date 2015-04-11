@@ -1,11 +1,29 @@
 #!/bin/bash
-CONFIG_VARIABLES="PASSWORD NOVA_ENDPOINT IRM_INTERFACE CRS_URL IMAGE_NAME DEFAULT_IMAGE"
+#!/bin/bash
+CONFIG_VARIABLES="main_TENANT_NAME
+                  main_USERNAME
+                  main_PASSWORD
+                  main_NOVA_ENDPOINT
+                  main_IRM_INTERFACE
+                  main_IRM_ADDRESS
+                  main_IRM_PORT
+                  CRS_ACTIVE
+                  CRS_CRS_URL
+                  CRS_IMAGE_NAME
+                  CRS_DEFAULT_IMAGE
+                  network_NET_ID
+                  network_IP_TYPE
+                  network_UUID
+                  overcommit_CPU_RATIO
+                  overcommit_MEM_RATIO
+                  overcommit_DISK_RATIO"
 
 # configuring irm-nova
 for varname in ${CONFIG_VARIABLES}; do
-    varvalue=$(eval "echo \${$varname}")
-    if [ -n "$varvalue" ]; then
-        sed -i "/^$varname:/s/:.*$/: $varvalue/" /harness/cfg/irm-nova.cfg 
+    value=$(eval "echo \${$varname}")
+    if [ -n "$value" ]; then
+        read section key <<< "${varname/_/ }"
+        sed -i -e"/^\[${section}\]/,/^\[.*\]/{/^${key}:.*/d}" -e"/^\[${section}\]/a${key}: ${value}" /harness/cfg/irm-nova.cfg
     fi
 done
 
