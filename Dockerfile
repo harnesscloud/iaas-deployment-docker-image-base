@@ -20,9 +20,9 @@ RUN pip install \
 
 WORKDIR /harness
 
-# (cd irm-nova && git checkout a789a05308a98586ca4480e2e7c1307c7f223c44) && \
 RUN git clone https://github.com/harnesscloud/crs.git && \
     git clone https://github.com/harnesscloud/irm-nova.git && \
+    (cd irm-nova && git checkout v1.0) &&
     git clone https://github.com/harnesscloud/irm-shepard.git
 
 COPY cfg/* cfg/
