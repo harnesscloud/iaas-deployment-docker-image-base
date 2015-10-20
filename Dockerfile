@@ -8,11 +8,15 @@ RUN apt-get update && \
         git \
         libzmq-dev \
         python-dev \
+        python-glpk \
+        python-nova \
+        python-neutron \
         python-pip && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 RUN pip install \
         bottle \
+        flask-classy \
         Flask \
         psutil \
         pyzmq \
